@@ -10,7 +10,20 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-```{r cars}
-
+```{r}
+library(shiny)   # Web app development
+library(haven)   # Read in SAS dataset
+library(bslib)   # Provide UI options
+library(ggplot2) # Data visualization
+library(scales)  # Improve axis labels
+library(plotly)# Interactive graphics
+library(readr)
+library(dplyr)
 ```
 
+```{r}
+dig.df <- read_csv("DIG.csv")
+
+
+
+```
