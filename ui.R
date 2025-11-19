@@ -54,7 +54,7 @@ ui <- fluidPage(
       selectInput("Variable", "Digitalis Data",
                   choices = c("Age" = "AGE",
                               "BMI" = "BMI",
-                              "Klevel" = "KLEVEL",
+                              "Creatine" = "CREAT",
                               "Diastolic BP" = "DIABP",
                               "Systolic BP" = "SYSBP"))),
     mainPanel(
