@@ -29,5 +29,3 @@ server <- function(input, output, session) {
       scale_x_discrete(labels = label_wrap(10))
   }, res = 100)
 }
-
-shinyApp(ui, server)
