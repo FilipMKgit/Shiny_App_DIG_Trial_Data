@@ -30,7 +30,6 @@ server <- function(input, output, session) {
                             y = .data[[input$Variable]], 
                             fill = TRTMT)) +
       geom_boxplot() +
-      geom_jitter(width = 0.3, alpha = 0.4) +
       theme_minimal() +
       theme(legend.position = "none",
             text = element_text(size = 15)) +
