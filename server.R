@@ -9,6 +9,20 @@ library(dplyr)
 
 dig.df <- read_csv("DIG.csv")
 
+dig.df <- dig.df %>%
+  mutate(
+    TRTMT  = factor(TRTMT, levels = c("0","1"), labels = c("Placebo", "Treatment")),
+    SEX = factor(SEX, levels = c("1","2"), labels = c("Male", "Female")),
+    HYPERTEN = factor(HYPERTEN, levels = c("0","1"), labels = c("No","Yes")),
+    CVD = factor(CVD, levels = c("0","1"), labels = c("No","Yes")),
+    WHF = factor(WHF, levels = c("0","1"), labels = c("No","Yes")),
+    DIG = factor(DIG, levels = c("0","1"), labels = c("No","Yes")),
+    HOSP = factor(HOSP, levels = c("0","1"), labels = c("No","Yes")),
+    DEATH = factor(DEATH, levels = c("0","1"), labels = c("Alive","Death"))
+  )
+
+dig.df
+
 server <- function(input, output, session) {
   
   output$boxplot <- renderPlot({
