@@ -46,6 +46,8 @@ dig.df <- dig.df %>%
 
 levels(dig.df$DEATH)
 
+dig.df <- na.omit(dig.df)
+
 ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
