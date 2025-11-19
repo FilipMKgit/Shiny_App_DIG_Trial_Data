@@ -24,10 +24,8 @@ server <- function(input, output, session) {
         title = "Digitalis Data",
         subtitle = "Comparing Treatment Groups",
         x = "",
-        y = attributes(adsl[[input$Variable]])
+        y = attributes(dig.df[[input$Variable]])
       ) +
       scale_x_discrete(labels = label_wrap(10))
   }, res = 100)
 }
-
-shinyApp(ui, server)
