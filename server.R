@@ -28,6 +28,14 @@ cols1 <- c('Treatment'='orange','Placebo'='pink')
 
 server <- function(input, output, session) {
   
+  
+  data_age <- reactive({
+    dig.df %>% 
+      filter(!is.na(AGE))
+    
+  })
+  
+  
   output$boxplot <- renderPlotly({
     
     plot <- ggplot(data = dig.df, aes(x = TRTMT, 
@@ -67,28 +75,19 @@ tooltip <- style(
 
     tooltip
   })
-}
-
-
-<<<<<<< HEAD
-=======
-server2 <- function(input, output, session) {
   
-  data <- reactive({
-    dig.df %>% 
-      filter(!is.na(AGE))
+  output$AGE_density <- renderPlotly({
+    
+    plot2 <- ggplot(data_age(), aes(x = AGE)) +
+      geom_density() +
+      theme_classic()
+    ggplotly(plot2)
     
   })
   
- output$AGE_density <- renderPlotly({
-   plot2 <- ggplot(data(), aes(x = AGE)) +
-     geom_density() +
-     theme_classic()
-   ggplotly(plot2)
-   
- }) 
-  
-  
 }
+
+
+
 
 
