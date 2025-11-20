@@ -58,7 +58,7 @@ ui <- fluidPage(
                               "Diastolic BP" = "DIABP",
                               "Systolic BP" = "SYSBP"))),
     mainPanel(
-      plotOutput("boxplot")
+      plotlyOutput("boxplot")
       )
   )
 )

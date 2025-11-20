@@ -25,7 +25,7 @@ dig.df
 
 server <- function(input, output, session) {
   
-  output$boxplot <- renderPlot({
+  output$boxplot <- renderPlotly({
     ggplot(data = dig.df, aes(x = TRTMT, 
                             y = .data[[input$Variable]], 
                             fill = TRTMT)) +
