@@ -6,6 +6,7 @@ library(scales)  # Improve axis labels
 library(plotly)# Interactive graphics
 library(readr)
 library(dplyr)
+library(ggthemes)
 
 dig.df <- read_csv("DIG.csv")
 
@@ -23,6 +24,8 @@ dig.df <- dig.df %>%
 
 dig.df
 
+cols1 <- c('Treatment'='orange','Placebo'='pink')
+
 server <- function(input, output, session) {
   
   output$boxplot <- renderPlotly({
@@ -31,7 +34,8 @@ server <- function(input, output, session) {
                             y = .data[[input$Variable]], 
                             fill = TRTMT)) +
       geom_boxplot() +
-      theme_minimal() +
+      theme_fivethirtyeight() +
+      scale_fill_manual(values = cols1)+
       theme(legend.position = "none",
             text = element_text(size = 15)) +
       labs(
