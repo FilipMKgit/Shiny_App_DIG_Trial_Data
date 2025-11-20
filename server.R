@@ -70,8 +70,8 @@ tooltip <- style(
 }
 
 
-<<<<<<< HEAD
-=======
+ HEAD
+
 server2 <- function(input, output, session) {
   
   data <- reactive({
