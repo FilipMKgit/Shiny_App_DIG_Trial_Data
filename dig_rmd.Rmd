@@ -1,6 +1,6 @@
 ---
 title: "Digitalis_Shiny"
-author: "Tom Delany"
+author: "FIlip & Tom"
 date: "2025-11-19"
 output: github_document
 ---
@@ -9,24 +9,27 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+##APP PLAN:
 
 ```{r}
-library(shiny)   # Web app development
-library(haven)   # Read in SAS dataset
-library(bslib)   # Provide UI options
-library(ggplot2) # Data visualization
-library(scales)  # Improve axis labels
-library(plotly)  # Interactive graphics
-library(readr)
-library(dplyr)
+knitr::include_graphics("Plan_photo.jpg")
 ```
 
-```{r}
-dig.df <- read_csv("DIG.csv")
-```
+TAB 1: Welcome
+This tab will introduce the user to the assignment, talk a bit about the data and the theme of the project.
+
+TAB 2: Explore
+This tab will have box plots comparing placebo and treatment, density plot/ histogram and stat table. Variables available will be age, BMI, klevel, creat, and the two blood pressures.
+
+TAB 3: Patient X
+This tab will allow the user to enter his own value for a selected variable (also choose treament/ placebo). The variable will then be plotted and represented on the box plot and density plot. Also an info box will be present which will state how unusual the patient is compared to the data set.
+
+THEME:
+If time allows for it we can make a nice military/ secret operation theme for the app.
+
+DESIGN:
+Let's keep the UI and server files separate. Maybe try use plotly wherever possible even though the statistics table is included in the interface(?).
 
 
-```{r}
-head(dig.df)
 
-```
+
