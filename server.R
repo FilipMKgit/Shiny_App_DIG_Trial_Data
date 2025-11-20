@@ -60,7 +60,7 @@ p <- style(
     "Q3: %{q3}<br>",
     "Min: %{min}<br>",
     "Max: %{max}<br>",
-    "<extra></extra>"
+    "<extra></extra"
   ),
   traces = box_traces
 )
@@ -68,4 +68,3 @@ p <- style(
     p
   })
 }
-
