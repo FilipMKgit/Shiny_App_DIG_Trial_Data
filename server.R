@@ -26,7 +26,8 @@ dig.df
 server <- function(input, output, session) {
   
   output$boxplot <- renderPlotly({
-    ggplot(data = dig.df, aes(x = TRTMT, 
+    
+    plot <- ggplot(data = dig.df, aes(x = TRTMT, 
                             y = .data[[input$Variable]], 
                             fill = TRTMT)) +
       geom_boxplot() +
@@ -40,5 +41,7 @@ server <- function(input, output, session) {
         y = attributes(dig.df[[input$Variable]])
       ) +
       scale_x_discrete(labels = label_wrap(10))
-  }, res = 100)
+     
+     ggplotly(plot)
+  })
 }
