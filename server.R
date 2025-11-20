@@ -46,6 +46,25 @@ server <- function(input, output, session) {
       ) +
       scale_x_discrete(labels = label_wrap(10))
      
-     ggplotly(plot)
+     p <- ggplotly(plot)
+
+
+box_traces <- which(sapply(p$x$data, function(tr) tr$type) == "box")
+
+p <- style(
+  p,
+  hovertemplate = paste(
+    "Treatment: %{x}<br>",
+    "Median: %{median}<br>",
+    "Q1: %{q1}<br>",
+    "Q3: %{q3}<br>",
+    "Min: %{min}<br>",
+    "Max: %{max}<br>",
+    "<extra></extra>"
+  ),
+  traces = box_traces
+)
+
+    p
   })
 }
