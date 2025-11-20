@@ -78,9 +78,9 @@ server <- function(input, output, session) {
   output$age_count_plot <- renderPlotly({
     
     plot2 <- ggplot(data_age(), aes(x = AGE)) +
-      geom_density() +
-      theme_classic()
-    ggplotly(plot2)
+      geom_density(fill = "steelblue", colour = "black") +
+      theme_classic() 
+    ggplotly(plot2) 
     
   })
   
