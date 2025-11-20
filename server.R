@@ -51,7 +51,7 @@ server <- function(input, output, session) {
 
 box_traces <- which(sapply(p$x$data, function(tr) tr$type) == "box")
 
-p <- style(
+tooltip <- style(
   p,
   hovertemplate = paste(
     "Treatment: %{x}<br>",
@@ -65,8 +65,30 @@ p <- style(
   traces = box_traces
 )
 
-    p
+    tooltip
   })
+}
+
+
+<<<<<<< HEAD
+=======
+server2 <- function(input, output, session) {
+  
+  data <- reactive({
+    dig.df %>% 
+      filter(!is.na(AGE))
+    
+  })
+  
+ output$AGE_density <- renderPlotly({
+   plot2 <- ggplot(data(), aes(x = AGE)) +
+     geom_density() +
+     theme_classic()
+   ggplotly(plot2)
+   
+ }) 
+  
+  
 }
 
 
