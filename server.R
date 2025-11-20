@@ -23,7 +23,6 @@ dig.df <- dig.df %>%
   )
 
 dig.df
-
 cols1 <- c('Treatment'='orange','Placebo'='pink')
 
 server <- function(input, output, session) {
@@ -39,8 +38,8 @@ server <- function(input, output, session) {
   output$boxplot <- renderPlotly({
     
     plot <- ggplot(data = dig.df, aes(x = TRTMT, 
-                            y = .data[[input$Variable]], 
-                            fill = TRTMT)) +
+                                      y = .data[[input$Variable]], 
+                                      fill = TRTMT)) +
       geom_boxplot() +
       theme_fivethirtyeight() +
       scale_fill_manual(values = cols1)+
@@ -53,37 +52,28 @@ server <- function(input, output, session) {
         y = attributes(dig.df[[input$Variable]])
       ) +
       scale_x_discrete(labels = label_wrap(10))
-     
-     p <- ggplotly(plot)
-
-
-box_traces <- which(sapply(p$x$data, function(tr) tr$type) == "box")
-
-tooltip <- style(
-  p,
-  hovertemplate = paste(
-    "Treatment: %{x}<br>",
-    "Median: %{median}<br>",
-    "Q1: %{q1}<br>",
-    "Q3: %{q3}<br>",
-    "Min: %{min}<br>",
-    "Max: %{max}<br>",
-    "<extra></extra"
-  ),
-  traces = box_traces
-)
-
+    
+    p <- ggplotly(plot)
+    
+    
+    box_traces <- which(sapply(p$x$data, function(tr) tr$type) == "box")
+    
+    tooltip <- style(
+      p,
+      hovertemplate = paste(
+        "Treatment: %{x}<br>",
+        "Median: %{median}<br>",
+        "Q1: %{q1}<br>",
+        "Q3: %{q3}<br>",
+        "Min: %{min}<br>",
+        "Max: %{max}<br>",
+        "<extra></extra"
+      ),
+      traces = box_traces
+    )
+    
     tooltip
   })
-<<<<<<< HEAD
-}
-
-
- HEAD
-
-server2 <- function(input, output, session) {
-=======
->>>>>>> b938217d35a8b13b3c732078e517638fe5460c26
   
   output$AGE_density <- renderPlotly({
     
@@ -95,6 +85,7 @@ server2 <- function(input, output, session) {
   })
   
 }
+
 
 
 
