@@ -49,3 +49,4 @@ server <- function(input, output, session) {
      ggplotly(plot)
   })
 }
+
