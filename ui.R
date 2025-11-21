@@ -4,6 +4,9 @@
 
 
 ui <- fluidPage(
+  navset_tab(
+    
+    nav_panel("Explore",
   sidebarLayout(
     sidebarPanel(
       selectInput(
@@ -37,4 +40,5 @@ ui <- fluidPage(
    )
   )
  )
-
+)
+)
