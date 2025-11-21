@@ -55,7 +55,7 @@ server <- function(input, output, session) {
     
     
     
-    tooltip
+  tooltip
   })
   output$age_count_plot <- renderPlotly({
     
@@ -75,9 +75,19 @@ server <- function(input, output, session) {
         ggplotly(plothist)
     }
   })
+  output$summary_table <- renderTable({
+    data_age() %>% 
+      group_by(TRTMT) %>% 
+      summarise(
+        n = n(),
+        Mean = mean(.data[[input$Variable]], na.rm = T),
+        sd = sd(.data[[input$Variable]], na.rm = T),
+        Median = median(.data[[input$Variable]], na.rm = T),
+        IQR = quantile(.data[[input$Variable]], na.rm = T, 0.75) - quantile(.data[[input$Variable]], na.rm = T, 0.25) 
+      )
+})
+
 }
-
-
 
 
 
