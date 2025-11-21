@@ -67,7 +67,7 @@ server <- function(input, output, session) {
     
   else {
         plothist <- ggplot(data_age(), aes(x = AGE)) +
-          geom_hist(fill = "steelblue", colour = "black") +
+          geom_histogram(fill = "steelblue", colour = "black") +
           labs(title = "Histogram by treatment") +
           theme_classic()
         
