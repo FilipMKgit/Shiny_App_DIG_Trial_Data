@@ -35,7 +35,7 @@ ui <- fluidPage(
       plotlyOutput("age_count_plot")
      ),
      card(
-       card_header("Summary stats"),
+       card_header("Summary Statistics (Excluding Patients with Missing Data)"),
        tableOutput("summary_table")
      )
    )
