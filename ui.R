@@ -5,8 +5,7 @@
 
 ui <- fluidPage(
   
-<<<<<<< HEAD
-=======
+
   tags$head(
     tags$style(HTML("
             code {
@@ -52,7 +51,7 @@ ui <- fluidPage(
   
   
   
->>>>>>> 167f01c3798bedf26d3ad07dec5370fe8f938f48
+
   navset_tab(
     nav_panel("Welcome",
     
