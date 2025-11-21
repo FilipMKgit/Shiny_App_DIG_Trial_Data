@@ -30,6 +30,9 @@ ui <- fluidPage(
       card(
       card_header("Distributions by treatment groups"),
       plotlyOutput("age_count_plot")
+     ),
+     card(
+       card_header("Summary stats"),
      )
    )
   )
