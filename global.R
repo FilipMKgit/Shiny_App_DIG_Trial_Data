@@ -9,7 +9,6 @@ library(dplyr)
 library(ggthemes)
 
 
-
 dig.df <- read_csv("DIG.csv")
 dig.df <- dig.df %>% select(ID, TRTMT, AGE, SEX, BMI, KLEVEL, CREAT, DIABP, SYSBP,
                             HYPERTEN, CVD, WHF, DIG, HOSP, HOSPDAYS, DEATH, DEATHDAY) %>% mutate(across(c(TRTMT, SEX, HYPERTEN, CVD, WHF, DIG, HOSP, DEATH), as.factor), ID = as.character(ID))
