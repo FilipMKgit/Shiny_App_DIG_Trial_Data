@@ -3,6 +3,9 @@
 
 cols1 <- c('Treatment'='orange','Placebo'='pink')
 
+
+
+#
 server <- function(input, output, session) {
   
   
@@ -55,13 +58,22 @@ server <- function(input, output, session) {
   
   output$age_count_plot <- renderPlotly({
     
-    plot2 <- ggplot(data_age(), aes(x = AGE)) +
+  if (input$dist_type == "density"){
+    
+    plotdensity <- ggplot(data_age(), aes(x = AGE)) +
       geom_density(fill = "steelblue", colour = "black") +
       theme_classic() 
-    ggplotly(plot2) 
+    ggplotly(plotdensity)}
     
+  else {
+        plothist <- ggplot(data_age(), aes(x = AGE)) +
+          geom_hist(fill = "steelblue", colour = "black") +
+          labs(title = "Histogram by treatment") +
+          theme_classic()
+        
+        ggplotly(plothist)
+    }
   })
-  
 }
 
 
