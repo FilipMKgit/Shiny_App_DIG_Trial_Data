@@ -4,8 +4,10 @@
 
 
 ui <- fluidPage(
-  
-##
+  navset_tab(
+    
+    
+    nav_panel("Welcome",
   tags$head(
     tags$style(HTML("
             code {
@@ -42,24 +44,9 @@ ui <- fluidPage(
       br(),
       p("span does the same thing as div, but it works with",
         span("groups of words", style = "color:blue"),
-        "that appear inside a paragraph.")
+        "that appear inside a paragraph."
+        )
     )
-  ),
-  
-  
-  
-  
-  
-  
-
-  navset_tab(
-    nav_panel("Welcome",
-    
-    fluidRow(
-      ),
-      column(width = 10,
-             includeMarkdown("dig_rmd.md")
-      )
     )
   ),
     
@@ -98,4 +85,5 @@ ui <- fluidPage(
    )
   )
  )
+)
 )
