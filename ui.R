@@ -36,6 +36,7 @@ ui <- fluidPage(
      ),
      card(
        card_header("Summary stats"),
+       tableOutput("summary_table")
      )
    )
   )
