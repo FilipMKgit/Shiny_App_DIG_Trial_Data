@@ -53,20 +53,21 @@ server <- function(input, output, session) {
       traces = box_traces
     )
     
+    
+    
     tooltip
   })
-  
   output$age_count_plot <- renderPlotly({
     
   if (input$dist_type == "density"){
     
-    plotdensity <- ggplot(data_age(), aes(x = AGE)) +
+    plotdensity <- ggplot(data_age(), aes(x = .data[[input$Variable]])) +
       geom_density(fill = "steelblue", colour = "black") +
       theme_classic() 
     ggplotly(plotdensity)}
     
   else {
-        plothist <- ggplot(data_age(), aes(x = AGE)) +
+        plothist <- ggplot(data_age(), aes(x = .data[[input$Variable]])) +
           geom_histogram(fill = "steelblue", colour = "black") +
           labs(title = "Histogram by treatment") +
           theme_classic()
