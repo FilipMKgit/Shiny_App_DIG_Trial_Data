@@ -4,7 +4,17 @@
 
 
 ui <- fluidPage(
+  
   navset_tab(
+    nav_panel("Welcome",
+    
+    fluidRow(
+      ),
+      column(width = 10,
+             includeMarkdown("dig_rmd.md")
+      )
+    )
+  ),
     
     nav_panel("Explore",
   sidebarLayout(
@@ -41,5 +51,4 @@ ui <- fluidPage(
    )
   )
  )
-)
 )
