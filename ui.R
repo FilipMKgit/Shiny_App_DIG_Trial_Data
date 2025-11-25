@@ -81,6 +81,36 @@ ui <- fluidPage(
      )
    )
   )
+ ),
+ 
+  nav_panel("User Input",
+ sidebarLayout(
+   sidebarPanel(
+     selectInput(
+       "user_variable", "User input",
+       choices = c("Age" = "AGE",
+                   "BMI" = "BMI",
+                   "Creatine" = "CREAT",
+                   "Diastolic BP" = "DIABP",
+                   "Systolic BP" = "SYSBP")
+     ), 
+     numericInput(
+       "user_value",
+       "User input",
+       value = 50
+     )
+   ),
+   mainPanel(
+     p("User input will appear here:")
+   )
+   
+   
+   
+   
+   
  )
+)
+ 
+ 
 )
 )
