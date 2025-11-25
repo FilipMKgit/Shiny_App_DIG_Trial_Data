@@ -92,17 +92,19 @@ server <- function(input, output, session) {
       )
 })
 
-}
+
 
 
 #####
 #tab 3 user defined
 
-observeEvent(input$user_variable, {
-  variable <- input$user_variable
-  rnge <- range(dig.df[[variable]], na.rm = T)
-  mid <- mean(rnge)
+  observeEvent(input$user_variable, {
+    variable <- input$user_variable
+    rnge <- range(dig.df[[variable]], na.rm = T)
+   mid <- mean(rnge)
   
-  updateNumericInput(session, "user_value", value = round(mid)
+   updateNumericInput(session, "user_value", value = round(mid)
   )
 })
+  
+}
