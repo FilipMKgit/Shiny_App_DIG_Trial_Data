@@ -1,21 +1,20 @@
 
-
-
+#colour definitions for later
 cols1 <- c('Treatment'='orange','Placebo'='pink')
 
-
-
-#
+###################################
+#server function
 server <- function(input, output, session) {
   
-  
+  #filter non-NA age
   data_age <- reactive({
     dig.df %>% 
       filter(!is.na(AGE))
     
   })
-  
-  
+
+####################
+#box plot
   output$boxplot <- renderPlotly({
     
     plot <- ggplot(data = dig.df, aes(x = TRTMT, 
@@ -57,6 +56,9 @@ server <- function(input, output, session) {
     
   tooltip
   })
+  
+  ########
+  #density plot and historgram
   output$age_count_plot <- renderPlotly({
     
   if (input$dist_type == "density"){
@@ -75,6 +77,9 @@ server <- function(input, output, session) {
         ggplotly(plothist)
     }
   })
+  
+  #######
+  #summary table
   output$summary_table <- renderTable({
     data_age() %>% 
       group_by(TRTMT) %>% 
@@ -90,5 +95,14 @@ server <- function(input, output, session) {
 }
 
 
+#####
+#tab 3 user defined
 
-
+observeEvent(input$user_variable, {
+  variable <- input$user_variable
+  rnge <- range(dig.df[[variable]], na.rm = T)
+  mid <- mean(rnge)
+  
+  updateNumericInput(session, "user_value", value = round(mid)
+  )
+})
