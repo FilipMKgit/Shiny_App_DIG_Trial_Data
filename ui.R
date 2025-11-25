@@ -101,16 +101,17 @@ ui <- fluidPage(
      )
    ),
    mainPanel(
-     p("User input will appear here:")
+     card(
+       card_header("Boxplots for Baseline Variables"),
+       plotlyOutput("boxplot")
+     ),
+     card(
+       card_header("Distributions by treatment groups"),
+       plotlyOutput("age_count_plot")
+     )
    )
-   
-   
-   
-   
    
  )
 )
- 
- 
 )
 )
