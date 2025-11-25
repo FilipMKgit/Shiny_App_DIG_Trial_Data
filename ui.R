@@ -8,7 +8,7 @@ ui <- fluidPage(
     
     
     nav_panel("Welcome",
-  tags$head(
+    tags$head(
     tags$style(HTML("
             code {
                 display:block;
@@ -26,29 +26,26 @@ ui <- fluidPage(
                 font-family:monospace;
             }"))
   ),
+    
+    tags$h2("Shiny Application for Digitalis Trial", style = "color: firebrick;"),
+    
+    p("This Shiny Application explores the DIG Trial was a randomized, double-blind,
+    multicenter trial with more than 300 centers. The aim of the trial was to assess
+    the efficacy and tolerability of Digitalis for the treatment of congestive heart failure."),
+    
+    strong("Dataset"),
+    
+    p("The DIG dataset consists of baseline and outcome characteristics from
+    the main DIG trial. There were 6800 participants in the trial (Garg et al., 1997)."),
   
-  titlePanel("My Shiny App"),
+    p("Our app explores the baseline characteristics of the trial through the lens of the user. 
+      The first tab shows visualisations of the summary statistics of this trial, including boxplots, density plots and a summary table. 
+      Tab 2 allows the user to input their own baseline characteristics and see how they would compare against the distributions of other patients within the trial. 
+      Finally, Tab 3 shows the outcome of the trial in terms of hozpitalizations and mortality."),
   
-  sidebarLayout(
-    sidebarPanel(),
-    mainPanel(
-      p("p creates a paragraph of text."),
-      p("A new p() command starts a new paragraph. Supply a style attribute to change the format of the entire paragraph.",
-        style = "font-family: 'times'; font-16pt"),
-      strong("strong() makes bold text."),
-      em("em() creates italicized (i.e, emphasized) text."),
-      br(),
-      code("code displays your text similar to computer code"),
-      div("div creates segments of text with a similar style. This division of text is all blue because I passed the argument 'style = color:blue' to div",
-          style = "color:blue"),
-      br(),
-      p("span does the same thing as div, but it works with",
-        span("groups of words", style = "color:blue"),
-        "that appear inside a paragraph."
-        )
-    )
-    )
-  ),
+    img(src = "Digitalis_glycosides.png")
+    
+    ),
     
     nav_panel("Explore",
   sidebarLayout(

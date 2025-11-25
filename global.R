@@ -26,3 +26,4 @@ dig.df <- dig.df %>%
 
 
 dig.df <- na.omit(dig.df)
+
