@@ -107,7 +107,7 @@ ui <- fluidPage(
      ),
      card(
        card_header("Distributions by Treatment groups with User Input"),
-       plotlyOutput("Distribution_user")
+       plotlyOutput("user_density")
      )
    )
  )

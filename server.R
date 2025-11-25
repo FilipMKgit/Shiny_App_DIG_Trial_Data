@@ -125,8 +125,29 @@ server <- function(input, output, session) {
     ggplotly(user_bplot)
 
   })
+  
+#density user defined
+
+output$user_density <- renderPlotly({
+  
+  var <- input$user_variable
+  user_val <- input$user_value
+  
+  plotdensity <- ggplot(dig.df, aes(x = .data[[var]])) +
+    geom_density(fill = "steelblue", colour = "black") +
+    geom_vline(xintercept = user_val,
+               colour = "firebrick") +
+    labs(title = "User Input Value in Distribution", x = var, y = "Density") +
+    theme_classic() 
+  
+  ggplotly(plotdensity)
+  
+})
+
 }
   
+
+
   
 
 
