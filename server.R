@@ -101,10 +101,27 @@ server <- function(input, output, session) {
   observeEvent(input$user_variable, {
     variable <- input$user_variable
     rnge <- range(dig.df[[variable]], na.rm = T)
-   mid <- mean(rnge)
+    average <- mean(rnge)
   
-   updateNumericInput(session, "user_value", value = round(mid)
-  )
+   updateNumericInput(session, "user_value", value = round(average))
 })
   
+  output$boxplot_user <- renderPlotly({
+    
+    var <- input$user_variable
+    user_val <- input$user_value
+    
+    user_bplot <- ggplot(dig.df, aes(x = TRTMT, y = .data[[var]], fill = TRTMT)) +
+      geom_boxplot(alpha = 0.7) +
+      geom_hline(yintercept = user_val, color = "firebrick") +
+      scale_fill_manual(values = cols1) +
+      theme_fivethirtyeight()+
+      labs(
+        title = paste("User Input Value in Distribution"),
+        x = "",
+        y = var
+      )
+    
+    ggplotly(user_bplot)
+  })
 }

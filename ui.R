@@ -73,7 +73,7 @@ ui <- fluidPage(
       ),
       card(
       card_header("Distributions by treatment groups"),
-      plotlyOutput("age_count_plot")
+      plotlyOutput("age_count_plot") #Change this later as it is for all variables
      ),
      card(
        card_header("Summary Statistics (Excluding Patients with Missing Data)"),
@@ -103,14 +103,13 @@ ui <- fluidPage(
    mainPanel(
      card(
        card_header("Boxplots for Baseline Variables and User Input"),
-       plotlyOutput("boxplot")
+       plotlyOutput("boxplot_user")
      ),
      card(
        card_header("Distributions by Treatment groups with User Input"),
-       plotlyOutput("age_count_plot")
+       plotlyOutput("Distribution_user")
      )
    )
-   
  )
 )
 )
