@@ -102,11 +102,11 @@ ui <- fluidPage(
    ),
    mainPanel(
      card(
-       card_header("Boxplots for Baseline Variables"),
+       card_header("Boxplots for Baseline Variables and User Input"),
        plotlyOutput("boxplot")
      ),
      card(
-       card_header("Distributions by treatment groups"),
+       card_header("Distributions by Treatment groups with User Input"),
        plotlyOutput("age_count_plot")
      )
    )
