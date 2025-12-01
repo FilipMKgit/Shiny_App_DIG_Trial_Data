@@ -5,6 +5,11 @@
 
 ui <- fluidPage(
   theme = light_mode,
+  
+  tags$div(
+    tags$h1("Digitalis Trial Shiny",
+    style = "font-weight:800; font-size:20px; padding-right:20px; color:steelblue;")
+  ),
   navset_tab(
     
     
@@ -28,7 +33,7 @@ ui <- fluidPage(
             }"))
   ),
     
-    tags$h2("Shiny Application for Digitalis Trial", style = "color: firebrick;"),
+    tags$h2("Welcome!", style = "color: firebrick;"),
   
   checkboxInput("dark_mode", "Dark mode", value = F), #darkmode tick box
     
