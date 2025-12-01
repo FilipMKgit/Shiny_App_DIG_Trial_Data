@@ -35,7 +35,11 @@ ui <- fluidPage(
     
     tags$h2("Welcome!", style = "color: firebrick;"),
   
-  checkboxInput("dark_mode", "Dark mode", value = F), #darkmode tick box
+  radioButtons("app_theme", "App Theme:", choices = c("Default" = "light_mode",
+  "Dark Mode" = "dark_mode",
+  "Sketchy" = "fun_mode"),
+  inline = TRUE
+  ), #mode tick box
     
     p("This Shiny Application explores the DIG Trial was a randomized, double-blind,
     multicenter trial with more than 300 centers. The aim of the trial was to assess

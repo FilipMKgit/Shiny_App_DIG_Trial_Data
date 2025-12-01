@@ -14,6 +14,8 @@ light_mode <- bs_theme( bootswatch = "flatly")
 
 dark_mode <- bs_theme(bootswatch = "darkly")
 
+fun_mode <- bs_theme(bootswatch = "sketchy")
+
 
 dig.df <- read_csv("DIG.csv")
 dig.df <- dig.df %>% select(ID, TRTMT, AGE, SEX, BMI, KLEVEL, CREAT, DIABP, SYSBP,

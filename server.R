@@ -4,8 +4,10 @@
 server <- function(input, output, session) {
   
   observe({
-    if (isTRUE(input$dark_mode)) {
+    if (input$app_theme == "dark_mode") {
       session$setCurrentTheme(dark_mode)
+    } else if (input$app_theme == "fun_mode") {
+      session$setCurrentTheme(fun_mode)
     } else {
       session$setCurrentTheme(light_mode)
     }
