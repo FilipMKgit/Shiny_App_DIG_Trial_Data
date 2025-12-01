@@ -145,40 +145,47 @@ output$user_density <- renderPlotly({
   output$user_summary_table <- renderTable({
     var <- input$user_variable
     user_val <- input$user_value
+    
     df_user <- dig.df %>% filter(!is.na(.data[[var]]))
     cum_proportion <- mean(df_user[[var]] <= user_val)
+    
     data.frame(
       "Variable" = var,
       "User value" = round(user_val, 3),
       "Proportion ≤ user" = round(cum_proportion, 3),
       "Percentile (%)" = round(cum_proportion * 100, 1),
-      check.names = F
-    )}, rownames = F)
+      check.names = FALSE
+    )
+  }, rownames = FALSE)
   
-  output$user_summary_text <- renderText({
+  #NICER TEXT BOX FOR TAB 3
+  output$user_summary_text <- renderUI({
     var <- input$user_variable
     user_val <- input$user_value
+    
     nice_names <- c(
-      "AGE" = "Age",
-      "BMI" = "BMI",
+      "AGE"   = "Age",
+      "BMI"   = "BMI",
       "CREAT" = "Creatine",
       "DIABP" = "Diastolic BP",
-      "SYSBP" = "Systolic BP")
+      "SYSBP" = "Systolic BP"
+    )
+    
     nice_var <- nice_names[[var]]
+    
+    AN <- ifelse(nice_var == "Age", "An", "A")
     
     df_user <- dig.df %>% filter(!is.na(.data[[var]]))
     cum_proportion <- mean(df_user[[var]] <= user_val)
     percentile <- round(cum_proportion * 100, 1)
-    paste("For",
-          nice_var,
-          "=",
-          round(user_val, 1),
-          "this value is in the",
-          percentile,
-          "percentile in the data.")
+    
+    HTML(paste0(
+      "<div class='alert alert-info' style='font-size:15px;'>",
+      AN, " <b>", nice_var, "</b> of <b>", round(user_val, 1), "</b> ",
+      "is higher than about <b>", percentile,
+      "%</b> of patients in the DIG trial.",
+      "</div>"
+    ))
   })
   
-
-  
 }
-

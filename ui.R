@@ -102,17 +102,16 @@ ui <- fluidPage(
    ),
    mainPanel(
      card(
-       card_header("Boxplots for Baseline Variables and User Input"),
        plotlyOutput("boxplot_user")
      ),
      card(
-       card_header("Distributions by Treatment groups with User Input"),
        plotlyOutput("user_density")
      ),
      card(
-       card_header("Interpretation"),
+       card_header("Distribution Table"),
        tableOutput("user_summary_table"),
-       textOutput("user_summary_text")
+       card_header("Interpretation"),
+       uiOutput("user_summary_text")
      )
    )
  )
