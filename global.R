@@ -7,6 +7,7 @@ library(plotly)# Interactive graphics
 library(readr)
 library(dplyr)
 library(ggthemes)
+library(knitr)
 
 
 dig.df <- read_csv("DIG.csv")

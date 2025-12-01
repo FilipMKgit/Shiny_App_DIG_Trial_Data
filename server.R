@@ -148,12 +148,12 @@ output$user_density <- renderPlotly({
     df_user <- dig.df %>% filter(!is.na(.data[[var]]))
     cum_proportion <- mean(df_user[[var]] <= user_val)
     data.frame(
-      Variable = var,
-      User_value = round(user_val, 3),
-      prop_equal_less = round(cum_proportion, 3),
-      percentile = round(cum_proportion * 100, 1)
-    )
-  })
+      "Variable" = var,
+      "User value" = round(user_val, 3),
+      "Proportion ≤ user" = round(cum_proportion, 3),
+      "Percentile (%)" = round(cum_proportion * 100, 1),
+      check.names = F
+    )}, rownames = F)
   
   output$user_summary_text <- renderText({
     var <- input$user_variable
@@ -161,8 +161,12 @@ output$user_density <- renderPlotly({
     df_user <- dig.df %>% filter(!is.na(.data[[var]]))
     cum_proportion <- mean(df_user[[var]] <= user_val)
     percentile <- round(cum_proportion * 100, 1)
-    paste("For", var, "=", round(user_val, 1),
-          "this value is in the", percentile,
+    paste("For",
+          var,
+          "=",
+          round(user_val, 1),
+          "this value is in the",
+          percentile,
           "percentile in the data.")
   })
   
