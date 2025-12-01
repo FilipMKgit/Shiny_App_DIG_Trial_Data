@@ -71,14 +71,15 @@ server <- function(input, output, session) {
   if (input$dist_type == "density"){
     
     plotdensity <- ggplot(data_age(), aes(x = .data[[input$Variable]])) +
-      geom_density(fill = "steelblue", colour = "black") +
-      theme_classic() 
+      geom_density(fill = "darkorange", colour = "black", alpha = 0.75) +
+      theme_classic() +
+      labs(title = "Density Plot by Baseline Variables")
     ggplotly(plotdensity)}
     
   else {
         plothist <- ggplot(data_age(), aes(x = .data[[input$Variable]])) +
-          geom_histogram(fill = "steelblue", colour = "black") +
-          labs(title = "Histogram by treatment") +
+          geom_histogram(fill = "darkcyan", colour = "white", alpha = 0.8) +
+          labs(title = "Histogram by Baseline Variables") +
           theme_classic()
         
         ggplotly(plothist)
@@ -143,20 +144,21 @@ server <- function(input, output, session) {
     if (input$user_dist_type3 == "density"){
       
       plotdensity <- ggplot(data_age(), aes(x = .data[[input$Variable]])) +
-        geom_density(fill = "steelblue", colour = "black") +
+        geom_density(fill = "seagreen", colour = "black") +
         geom_vline(xintercept = user_val,
                    colour = "firebrick",
                    linewidth = 1) +
+        labs(title = "Density Plot Distribution by Baseline Vraiables")+
         theme_classic() 
       ggplotly(plotdensity)}
     
     else {
       plothist <- ggplot(data_age(), aes(x = .data[[input$Variable]])) +
-        geom_histogram(fill = "steelblue", colour = "black") +
+        geom_histogram(fill = "orchid", colour = "white") +
         geom_vline(xintercept = user_val,
                    colour = "firebrick",
                    linewidth = 1) +
-        labs(title = "Histogram by treatment") +
+        labs(title = "Histogram Distribution of Baseline Variables") +
         theme_classic()
       
       ggplotly(plothist)
@@ -210,5 +212,62 @@ server <- function(input, output, session) {
       "</div>"
     ))
   })
+  #--------------------------------------------------------------------------------------------
+  #Hosp Plot for Tab 4
   
+ output$Hosp_plot <- renderPlotly({
+   
+   df_heat <- WHF_Hosp_summary
+   
+   if (input$hosp_group == "Placebo") {
+     df_heat <- df_heat[df_heat$TRTMT == "Placebo", ]
+   } else if (input$hosp_group == "Treatment") {
+     df_heat <- df_heat[df_heat$TRTMT == "Treatment", ]
+   }
+   
+   plot_heat <- ggplot(df_heat,aes(x = WHF, y = pct_Hosp, fill = n)) +
+     scale_fill_gradient(low ="darkslategray1", high ="darkslategray4") +
+     geom_tile() +
+     facet_wrap(~ TRTMT) +
+     labs(
+       title = "Hospitalization Heatmap by Treatment Group",
+       x = "Worsening Heart Failure (WHF)",
+       y = "Percentage Hospitalized",
+       fill = "Count (n)") +
+     theme_stata()
+   
+   ggplotly(plot_heat)
+ })
+  #--------------------------------------------------------------------------------------------
+  #Death Month Plot for Tab 4
+  output$death_month_plot <- renderPlotly({
+    
+    df_death <- Month_dig.df
+    
+    df_death <- df_death %>%
+      filter(Month <= input$death_month_max)
+  
+    p <- ggplot(
+      df_death,
+      aes(x = Month, fill = TRTMT, y = after_stat(density))
+    ) +
+      scale_fill_manual(values = c("royalblue3", "mediumseagreen")) +
+      geom_histogram(alpha = 0.5, bins = 25, position = "identity") +
+      geom_density(alpha = 0.5) +
+      labs(
+        title = "Distribution of Death Month",
+        subtitle = paste("Showing deaths up to Month:", input$death_month_max),
+        x = "Month since Randomisation",
+        y = "Density",
+        fill = "Treatment Group"
+      ) +
+      theme_fivethirtyeight() +
+      theme(
+        axis.title = element_text(size = 14, face = "bold"),  
+        axis.title.x = element_text(margin = margin(t = 10)), 
+        axis.title.y = element_text(margin = margin(r = 10))
+      )
+    
+    ggplotly(p)
+  })
 }

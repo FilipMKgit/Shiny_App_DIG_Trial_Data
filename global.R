@@ -35,4 +35,14 @@ dig.df <- dig.df %>%
 
 dig.df <- na.omit(dig.df)
 
-cols1 <- c('Treatment'='orange','Placebo'='pink')
+cols1 <- c('Treatment'='royalblue','Placebo'='seagreen') #Colourblind friendly
+
+#------------------------------------------------------------------------------------------------------------
+#From Assignment 4 for WHF
+WHF_Hosp_summary <- dig.df %>%
+  group_by(TRTMT, WHF) %>% 
+  summarise(n = n(), hospitalizations = sum(HOSP == "Yes"), pct_Hosp = round(100*(mean(HOSP == "Yes")),2))
+#From Assignment 4 for Death Month
+Month_dig.df <- dig.df %>% mutate(Month = round(as.numeric(DEATHDAY/30))) %>% select(ID, TRTMT, Month) %>% filter(!is.na(Month))
+
+

@@ -51,11 +51,15 @@ ui <- fluidPage(
     the main DIG trial. There were 6800 participants in the trial (Garg et al., 1997)."),
   
     p("Our app explores the baseline characteristics of the trial through the lens of the user. 
-      The first tab shows visualisations of the summary statistics of this trial, including boxplots, density plots and a summary table. 
-      Tab 2 allows the user to input their own baseline characteristics and see how they would compare against the distributions of other patients within the trial. 
-      Finally, Tab 3 shows the outcome of the trial in terms of hozpitalizations and mortality."),
+      The first tab (Explore) shows visualisations of the summary statistics of this trial, including boxplots, density plots and a summary table. 
+      Tab 2 (User Input) allows the user to input their own baseline characteristics and see how they would compare against the distributions of other patients within the trial. 
+      Finally, Tab 3 (Outcomes) shows the outcome of the trial in terms of hozpitalizations and mortality."),
   
-    img(src = "Digitalis_glycosides.png")
+    img(src = "Digitalis_glycosides.png", width = "300px"),
+  
+    p("Digitalis is a cardiac glycoside derived from the foxglove plant, 
+      a plant who's therapeutic potential was first described by William Withering in 1785. 
+      The drug also commonly referred to as digoxin is known for its distinctive steroid nucleus and lactone ring structure seen above(Hauptmann and kelly, 1999)")
     
     ),
     
@@ -133,8 +137,41 @@ ui <- fluidPage(
      )
    )
  )
+),
+  nav_panel("Outcomes",
+            sidebarLayout(
+              sidebarPanel(
+                h4("Outcomes Overview"),
+                p("This tab summarises mortality and hospitalization outcomes for different groups from the Digitalis Trial."),
+                
+                radioButtons(
+                  "hosp_group",
+                  "Select Treatment Group:",
+                  choices = c("Both", "Placebo", "Treatment"),
+                  selected = "Both",
+                  inline = TRUE
+                ),
+                sliderInput(
+                  "death_month_max",
+                  "Show deaths up to month:",
+                  min = 0,
+                  max = max(Month_dig.df$Month, na.rm = TRUE),
+                  value = max(Month_dig.df$Month, na.rm = TRUE),
+                  step = 1
+                )
+                ),
+              mainPanel(
+                card(
+                  card_header("Distribution of Hospitalization Month by Treatment Group"),
+                  plotlyOutput("Hosp_plot"),
+              
+                card(
+                    card_header("Distribution of Death Month by Treatment Group"),
+                    plotlyOutput("death_month_plot")
+                  )
+                )
+              )
+            )
+  )
 )
 )
-)
-
-
