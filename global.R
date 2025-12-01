@@ -27,3 +27,4 @@ dig.df <- dig.df %>%
 
 dig.df <- na.omit(dig.df)
 
+cols1 <- c('Treatment'='orange','Placebo'='pink')

@@ -108,6 +108,11 @@ ui <- fluidPage(
      card(
        card_header("Distributions by Treatment groups with User Input"),
        plotlyOutput("user_density")
+     ),
+     card(
+       card_header("Interpretation"),
+       tableOutput("user_summary_table"),
+       textOutput("user_summary_text")
      )
    )
  )

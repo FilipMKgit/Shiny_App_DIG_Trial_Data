@@ -1,9 +1,6 @@
 
-#colour definitions for later
-cols1 <- c('Treatment'='orange','Placebo'='pink')
-
-###################################
-#server function
+#--------------------------------------------------------------------------------------------
+#START OF FUNCTION
 server <- function(input, output, session) {
   
   #filter non-NA age
@@ -13,8 +10,8 @@ server <- function(input, output, session) {
     
   })
 
-####################
-#box plot tab 2
+#--------------------------------------------------------------------------------------------
+#BOX PLOT IN TAB 2
   output$boxplot <- renderPlotly({
     
     plot <- ggplot(data = dig.df, aes(x = TRTMT, 
@@ -57,8 +54,8 @@ server <- function(input, output, session) {
   tooltip
   })
   
-  ########
-  #density plot and historgram
+  #--------------------------------------------------------------------------------------------
+  #DENSITY PLOT AND HISTORGRAM FOR TAB 2
   output$age_count_plot <- renderPlotly({
     
   if (input$dist_type == "density"){
@@ -78,8 +75,8 @@ server <- function(input, output, session) {
     }
   })
   
-  #######
-  #summary table
+  #--------------------------------------------------------------------------------------------
+  #SUMMARY TAB FOR TAB 2
   output$summary_table <- renderTable({
     data_age() %>% 
       group_by(TRTMT) %>% 
@@ -95,8 +92,8 @@ server <- function(input, output, session) {
 
 
 
-#####
-#tab 3 user defined
+  #--------------------------------------------------------------------------------------------
+  #USER VALUES FOR TAB 3
 
   observeEvent(input$user_variable, {
     variable <- input$user_variable
@@ -126,7 +123,8 @@ server <- function(input, output, session) {
 
   })
   
-#density user defined
+  #--------------------------------------------------------------------------------------------
+  #DENSITY PLOT FOR TAB 3
 
 output$user_density <- renderPlotly({
   
@@ -144,10 +142,31 @@ output$user_density <- renderPlotly({
   
 })
 
+  output$user_summary_table <- renderTable({
+    var <- input$user_variable
+    user_val <- input$user_value
+    df_user <- dig.df %>% filter(!is.na(.data[[var]]))
+    cum_proportion <- mean(df_user[[var]] <= user_val)
+    data.frame(
+      Variable = var,
+      User_value = round(user_val, 3),
+      prop_equal_less = round(cum_proportion, 3),
+      percentile = round(cum_proportion * 100, 1)
+    )
+  })
+  
+  output$user_summary_text <- renderText({
+    var <- input$user_variable
+    user_val <- input$user_value
+    df_user <- dig.df %>% filter(!is.na(.data[[var]]))
+    cum_proportion <- mean(df_user[[var]] <= user_val)
+    percentile <- round(cum_proportion * 100, 1)
+    paste("For", var, "=", round(user_val, 1),
+          "this value is in the", percentile,
+          "percentile in the data.")
+  })
+  
+
+  
 }
-  
-
-
-  
-
 
