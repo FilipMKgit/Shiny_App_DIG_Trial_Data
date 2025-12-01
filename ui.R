@@ -119,7 +119,7 @@ ui <- fluidPage(
        plotlyOutput("user_density")
      ),
      card(
-       card_header("Distribution Table"),
+       card_header("Distribution Table of User Input"),
        tableOutput("user_summary_table"),
      )
    )

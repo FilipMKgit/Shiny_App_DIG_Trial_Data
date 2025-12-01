@@ -142,12 +142,18 @@ server <- function(input, output, session) {
       
       plotdensity <- ggplot(data_age(), aes(x = .data[[input$Variable]])) +
         geom_density(fill = "steelblue", colour = "black") +
+        geom_vline(xintercept = user_val,
+                   colour = "firebrick",
+                   linewidth = 1) +
         theme_classic() 
       ggplotly(plotdensity)}
     
     else {
       plothist <- ggplot(data_age(), aes(x = .data[[input$Variable]])) +
         geom_histogram(fill = "steelblue", colour = "black") +
+        geom_vline(xintercept = user_val,
+                   colour = "firebrick",
+                   linewidth = 1) +
         labs(title = "Histogram by treatment") +
         theme_classic()
       
