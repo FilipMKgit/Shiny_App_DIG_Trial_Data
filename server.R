@@ -78,7 +78,7 @@ server <- function(input, output, session) {
     
   else {
         plothist <- ggplot(data_age(), aes(x = .data[[input$Variable]])) +
-          geom_histogram(fill = "darkcyan", colour = "white", alpha = 0.8) +
+          geom_histogram(fill = "tomato", colour = "white", alpha = 0.8) +
           labs(title = "Histogram by Baseline Variables") +
           theme_classic()
         
@@ -120,8 +120,8 @@ server <- function(input, output, session) {
     user_val <- input$user_value
     
     user_bplot <- ggplot(dig.df, aes(x = TRTMT, y = .data[[var]], fill = TRTMT)) +
-      geom_boxplot(alpha = 0.7) +
-      geom_hline(yintercept = user_val, color = "firebrick") +
+      geom_boxplot(alpha = 0.8) +
+      geom_hline(yintercept = user_val, color = "red3") +
       scale_fill_manual(values = cols1) +
       theme_fivethirtyeight()+
       labs(
@@ -144,9 +144,9 @@ server <- function(input, output, session) {
     if (input$user_dist_type3 == "density"){
       
       plotdensity <- ggplot(data_age(), aes(x = .data[[input$Variable]])) +
-        geom_density(fill = "seagreen", colour = "black") +
+        geom_density(fill = "darkturquoise", colour = "black") +
         geom_vline(xintercept = user_val,
-                   colour = "firebrick",
+                   colour = "red3",
                    linewidth = 1) +
         labs(title = "Density Plot Distribution by Baseline Vraiables")+
         theme_classic() 
@@ -156,7 +156,7 @@ server <- function(input, output, session) {
       plothist <- ggplot(data_age(), aes(x = .data[[input$Variable]])) +
         geom_histogram(fill = "orchid", colour = "white") +
         geom_vline(xintercept = user_val,
-                   colour = "firebrick",
+                   colour = "red3",
                    linewidth = 1) +
         labs(title = "Histogram Distribution of Baseline Variables") +
         theme_classic()
