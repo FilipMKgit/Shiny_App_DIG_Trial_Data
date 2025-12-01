@@ -134,21 +134,28 @@ server <- function(input, output, session) {
   #--------------------------------------------------------------------------------------------
   #DENSITY PLOT FOR TAB 3
 
-output$user_density <- renderPlotly({
+  output$user_density <- renderPlotly({
+    var <- input$user_variable
+    user_val <- input$user_value
+    
+    if (input$user_dist_type3 == "density"){
+      
+      plotdensity <- ggplot(data_age(), aes(x = .data[[input$Variable]])) +
+        geom_density(fill = "steelblue", colour = "black") +
+        theme_classic() 
+      ggplotly(plotdensity)}
+    
+    else {
+      plothist <- ggplot(data_age(), aes(x = .data[[input$Variable]])) +
+        geom_histogram(fill = "steelblue", colour = "black") +
+        labs(title = "Histogram by treatment") +
+        theme_classic()
+      
+      ggplotly(plothist)
+    }
+  })
   
-  var <- input$user_variable
-  user_val <- input$user_value
-  
-  plotdensity <- ggplot(dig.df, aes(x = .data[[var]])) +
-    geom_density(fill = "steelblue", colour = "black") +
-    geom_vline(xintercept = user_val,
-               colour = "firebrick") +
-    labs(title = "User Input Value in Distribution", x = var, y = "Density") +
-    theme_classic() 
-  
-  ggplotly(plotdensity)
-  
-})
+
 
   output$user_summary_table <- renderTable({
     var <- input$user_variable

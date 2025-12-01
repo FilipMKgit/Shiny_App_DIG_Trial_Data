@@ -102,6 +102,12 @@ ui <- fluidPage(
        "User input",
        value = 50
      ),
+     radioButtons(
+       "user_dist_type3",
+       "Distribution Type:",
+       choices = c("Density plot" = "density",
+                   "Histogram" = "hist")
+     ),
      card_header("Interpretation"),
      uiOutput("user_summary_text")
    ),
