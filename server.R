@@ -3,6 +3,14 @@
 #START OF FUNCTION
 server <- function(input, output, session) {
   
+  observe({
+    if (isTRUE(input$dark_mode)) {
+      session$setCurrentTheme(dark_mode)
+    } else {
+      session$setCurrentTheme(light_mode)
+    }
+  })
+  
   #filter non-NA age
   data_age <- reactive({
     dig.df %>% 

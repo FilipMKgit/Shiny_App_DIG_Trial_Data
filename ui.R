@@ -4,6 +4,7 @@
 
 
 ui <- fluidPage(
+  theme = light_mode,
   navset_tab(
     
     
@@ -28,6 +29,8 @@ ui <- fluidPage(
   ),
     
     tags$h2("Shiny Application for Digitalis Trial", style = "color: firebrick;"),
+  
+  checkboxInput("dark_mode", "Dark mode", value = F),
     
     p("This Shiny Application explores the DIG Trial was a randomized, double-blind,
     multicenter trial with more than 300 centers. The aim of the trial was to assess

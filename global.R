@@ -8,6 +8,11 @@ library(readr)
 library(dplyr)
 library(ggthemes)
 library(knitr)
+library(bslib)
+
+light_mode <- bs_theme( bootswatch = "flatly")
+
+dark_mode <- bs_theme(bootswatch = "darkly")
 
 
 dig.df <- read_csv("DIG.csv")
