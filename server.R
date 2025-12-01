@@ -158,11 +158,19 @@ output$user_density <- renderPlotly({
   output$user_summary_text <- renderText({
     var <- input$user_variable
     user_val <- input$user_value
+    nice_names <- c(
+      "AGE" = "Age",
+      "BMI" = "BMI",
+      "CREAT" = "Creatine",
+      "DIABP" = "Diastolic BP",
+      "SYSBP" = "Systolic BP")
+    nice_var <- nice_names[[var]]
+    
     df_user <- dig.df %>% filter(!is.na(.data[[var]]))
     cum_proportion <- mean(df_user[[var]] <= user_val)
     percentile <- round(cum_proportion * 100, 1)
     paste("For",
-          var,
+          nice_var,
           "=",
           round(user_val, 1),
           "this value is in the",
