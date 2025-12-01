@@ -35,7 +35,7 @@ ui <- fluidPage(
     
     tags$h2("Welcome!", style = "color: firebrick;"),
   
-  radioButtons("app_theme", "App Theme:", choices = c("Default" = "light_mode",
+  radioButtons("app_theme", "Select App Theme:", choices = c("Default" = "light_mode",
   "Dark Mode" = "dark_mode",
   "Sketchy" = "fun_mode"),
   inline = TRUE
