@@ -30,7 +30,7 @@ ui <- fluidPage(
     
     tags$h2("Shiny Application for Digitalis Trial", style = "color: firebrick;"),
   
-  checkboxInput("dark_mode", "Dark mode", value = F),
+  checkboxInput("dark_mode", "Dark mode", value = F), #darkmode tick box
     
     p("This Shiny Application explores the DIG Trial was a randomized, double-blind,
     multicenter trial with more than 300 centers. The aim of the trial was to assess
@@ -101,7 +101,9 @@ ui <- fluidPage(
        "user_value",
        "User input",
        value = 50
-     )
+     ),
+     card_header("Interpretation"),
+     uiOutput("user_summary_text")
    ),
    mainPanel(
      card(
@@ -113,8 +115,6 @@ ui <- fluidPage(
      card(
        card_header("Distribution Table"),
        tableOutput("user_summary_table"),
-       card_header("Interpretation"),
-       uiOutput("user_summary_text")
      )
    )
  )

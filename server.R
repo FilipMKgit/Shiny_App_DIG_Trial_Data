@@ -166,7 +166,7 @@ output$user_density <- renderPlotly({
     )
   }, rownames = FALSE)
   
-  #NICER TEXT BOX FOR TAB 3
+  #NICE TEXT BOX FOR TAB 3
   output$user_summary_text <- renderUI({
     var <- input$user_variable
     user_val <- input$user_value
