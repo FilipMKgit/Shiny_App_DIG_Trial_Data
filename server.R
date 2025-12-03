@@ -143,22 +143,25 @@ server <- function(input, output, session) {
     
     if (input$user_dist_type3 == "density"){
       
-      plotdensity <- ggplot(data_age(), aes(x = .data[[input$Variable]])) +
+      plotdensity <- ggplot(data_age(), aes(x = .data[[var]])) +
         geom_density(fill = "darkturquoise", colour = "black") +
         geom_vline(xintercept = user_val,
                    colour = "red3",
                    linewidth = 1) +
-        labs(title = "Density Plot Distribution by Baseline Vraiables")+
+        labs(title = "Density Plot Distribution by Baseline Vraiables",
+             y = "Density")+
         theme_classic() 
       ggplotly(plotdensity)}
     
     else {
-      plothist <- ggplot(data_age(), aes(x = .data[[input$Variable]])) +
+      plothist <- ggplot(data_age(), aes(x = .data[[var]])) +
         geom_histogram(fill = "orchid", colour = "white") +
         geom_vline(xintercept = user_val,
                    colour = "red3",
                    linewidth = 1) +
-        labs(title = "Histogram Distribution of Baseline Variables") +
+        labs(
+          title = "Histogram Distribution of Baseline Variables",
+          y = "Count") +
         theme_classic()
       
       ggplotly(plothist)
@@ -230,7 +233,7 @@ server <- function(input, output, session) {
      geom_tile() +
      facet_wrap(~ TRTMT) +
      labs(
-       title = "Hospitalization Heatmap by Treatment Group",
+       title = "Hospitalization Heatmap by Treatment Group and Wosening Heart Failure",
        x = "Worsening Heart Failure (WHF)",
        y = "Percentage Hospitalized",
        fill = "Count (n)") +

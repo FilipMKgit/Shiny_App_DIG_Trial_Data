@@ -11,7 +11,8 @@ ui <- fluidPage(
     style = "font-weight:800; font-size:20px; padding-right:20px; color:steelblue;")
   ),
   navset_tab(
-    
+#--------------------------------------------------------------------------------------------
+#Welcome Tab    
     
     nav_panel("Welcome",
     tags$head(
@@ -39,7 +40,7 @@ ui <- fluidPage(
   "Dark Mode" = "dark_mode",
   "Sketchy" = "fun_mode"),
   inline = TRUE
-  ), #mode tick box
+  ), #Selecting Theme for entire app
     
     p("This Shiny Application explores the DIG Trial was a randomized, double-blind,
     multicenter trial with more than 300 centers. The aim of the trial was to assess
@@ -61,8 +62,9 @@ ui <- fluidPage(
       a plant who's therapeutic potential was first described by William Withering in 1785. 
       The drug also commonly referred to as digoxin is known for its distinctive steroid nucleus and lactone ring structure seen above(Hauptmann and kelly, 1999)")
     
-    ),
-    
+    ), #Paragraphs Describing app, context of trial and an image of digitalis
+#--------------------------------------------------------------------------------------------
+#Explore Tab     
     nav_panel("Explore",
   sidebarLayout(
     sidebarPanel(
@@ -98,7 +100,8 @@ ui <- fluidPage(
    )
   )
  ),
- 
+#--------------------------------------------------------------------------------------------
+#User Input Tab  
   nav_panel("User Input",
  sidebarLayout(
    sidebarPanel(
@@ -108,19 +111,19 @@ ui <- fluidPage(
                    "BMI" = "BMI",
                    "Creatine" = "CREAT",
                    "Diastolic BP" = "DIABP",
-                   "Systolic BP" = "SYSBP")
+                   "Systolic BP" = "SYSBP") # Variables to be displayed on boxplot and Density plot
      ), 
      numericInput(
        "user_value",
        "User input",
        value = 50
-     ),
+     ), # User can put in their own values
      radioButtons(
        "user_dist_type3",
        "Distribution Type:",
        choices = c("Density plot" = "density",
                    "Histogram" = "hist")
-     ),
+     ), 
      card_header("Interpretation"),
      uiOutput("user_summary_text")
    ),
@@ -138,6 +141,8 @@ ui <- fluidPage(
    )
  )
 ),
+#--------------------------------------------------------------------------------------------
+#Outcomes Tab 
   nav_panel("Outcomes",
             sidebarLayout(
               sidebarPanel(
@@ -172,6 +177,6 @@ ui <- fluidPage(
                 )
               )
             )
-  )
+           )
 )
 )
