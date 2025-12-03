@@ -44,7 +44,8 @@ ui <- fluidPage(
     
     p("This Shiny Application explores the DIG Trial was a randomized, double-blind,
     multicenter trial with more than 300 centers. The aim of the trial was to assess
-    the efficacy and tolerability of Digitalis for the treatment of congestive heart failure."),
+    the efficacy and tolerability of Digitalis for the treatment of congestive heart failure.
+    You can explore our app in three different themes by selecting one of the radio buttons above."),
     
     strong("Dataset"),
     
@@ -60,7 +61,7 @@ ui <- fluidPage(
   
     p("Digitalis is a cardiac glycoside derived from the foxglove plant, 
       a plant who's therapeutic potential was first described by William Withering in 1785. 
-      The drug also commonly referred to as digoxin is known for its distinctive steroid nucleus and lactone ring structure seen above(Hauptmann and kelly, 1999)")
+      The drug also commonly referred to as digoxin is known for its distinctive steroid nucleus and lactone ring structure seen above (Hauptmann and kelly, 1999).")
     
     ), #Paragraphs Describing app, context of trial and an image of digitalis
 #--------------------------------------------------------------------------------------------
