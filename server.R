@@ -202,7 +202,7 @@ server <- function(input, output, session) {
     cum_proportion <- mean(df_user[[var]] <= user_val)
     
     data.frame(
-      "Variable" = nice_names,
+      "Variable" = nice_names[[var]],
       "User value" = round(user_val, 3),
       "Proportion ≤ user" = round(cum_proportion, 3),
       "Percentile (%)" = round(cum_proportion * 100, 1),
