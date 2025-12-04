@@ -45,32 +45,28 @@ ui <- fluidPage(
     
     br(),
     tags$h3("About This App"),
+    tags$ul(
+      tags$li("Explore the summary statistics of the DIG trial using interactive plots and summary tables."),
+      tags$li("Input your own values to see how you compare to the sample in the study."),
+      tags$li("Explore the outcomes of the trial and how treatment affected this."),
+      tags$li("You can do all of this in 3 different themes!")
+    ),
   
-    
-    p("This Shiny Application explores the DIG Trial was a randomized, double-blind,
-    multicenter trial with more than 300 centers. The aim of the trial was to assess
-    the efficacy and tolerability of Digitalis for the treatment of congestive heart failure.
-    You can explore our app in three different themes by selecting one of the radio buttons above."),
     br(),
     tags$h3("The Dataset"),
     
     p("The DIG dataset consists of baseline and outcome characteristics from
     the main DIG trial. There were 6800 participants in the trial (Garg et al., 1997)."),
-    br(),
-    tags$h3("What You Can Do in This App"),
-  
-    p("Our app explores the baseline characteristics of the trial through the lens of the user. 
-      The first tab (Explore) shows visualisations of the summary statistics of this trial, including boxplots, density plots and a summary table. 
-      Tab 2 (User Input) allows the user to input their own baseline characteristics and see how they would compare against the distributions of other patients within the trial. 
-      Finally, Tab 3 (Outcomes) shows the outcome of the trial in terms of hozpitalizations and mortality."),
+
     br(),
     tags$h3("The Drug"), 
     
     img(src = "Digitalis_glycosides.png", width = "300px"),
-  
+    br(),
     p("Digitalis is a cardiac glycoside derived from the foxglove plant, 
       a plant who's therapeutic potential was first described by William Withering in 1785. 
-      The drug also commonly referred to as digoxin is known for its distinctive steroid nucleus and lactone ring structure seen above (Hauptmann and kelly, 1999).")
+      The drug also commonly referred to as digoxin is known for its distinctive steroid nucleus and lactone ring structure seen above (Hauptmann and kelly, 1999)."),
+   
     
     ), #Paragraphs Describing app, context of trial and an image of digitalis
 #--------------------------------------------------------------------------------------------
@@ -177,8 +173,8 @@ ui <- fluidPage(
                 ),
               mainPanel(
                 card(
-                  card_header("Distribution of Hospitalization Month by Treatment Group"),
-                  plotlyOutput("Hosp_plot"),
+                    card_header("Distribution of Hospitalization Month by Treatment Group"),
+                    plotlyOutput("Hosp_plot"),
               
                 card(
                     card_header("Distribution of Death Month by Treatment Group"),
