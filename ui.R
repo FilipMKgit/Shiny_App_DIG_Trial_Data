@@ -69,7 +69,7 @@ ui <- fluidPage(
     br(),
       tags$li("Digitalis is a cardiac glycoside derived from the foxglove plant, a plant who's therapeutic potential was first described by William Withering in 1785."),
       tags$li("The drug also commonly referred to as digoxin and is known for its distinctive steroid nucleus and lactone ring structure seen above (Hauptmann and kelly, 1999)."),
-   
+    br(), #Break for footer
     
     ),
 #--------------------------------------------------------------------------------------------
