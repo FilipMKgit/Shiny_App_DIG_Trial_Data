@@ -14,7 +14,7 @@ ui <- fluidPage(
 #--------------------------------------------------------------------------------------------
 #Welcome Tab    
     
-    nav_panel("Welcome",
+    nav_panel("Welcome", 
     tags$head(
     tags$style(HTML("
             code {
@@ -34,9 +34,9 @@ ui <- fluidPage(
             }"))
   ),
     
-    tags$h2("Welcome!", style = "color: firebrick;"),
+    tags$h2("Welcome!", style = "color: firebrick;"), #Main Subtitle
   
-  br(),
+  br(), #Space out sections
   radioButtons("app_theme", "Select App Theme:", choices = c("Default" = "light_mode",
   "Dark Mode" = "dark_mode",
   "Sketchy" = "fun_mode"),
@@ -44,31 +44,34 @@ ui <- fluidPage(
   ), #Selecting Theme for entire app
     
     br(),
-    tags$h3("About This App"),
+    tags$h3("About This App"), #Context for app
     tags$ul(
-      tags$li("Explore the summary statistics of the DIG trial using interactive plots and summary tables."),
+      tags$li("Explore the summary statistics of the DIG trial using interactive plots and summary tables."), #Bullet Points
       tags$li("Input your own values to see how you compare to the sample in the study."),
       tags$li("Explore the outcomes of the trial and how treatment affected this."),
       tags$li("You can do all of this in 3 different themes!")
     ),
   
     br(),
-    tags$h3("The Dataset"),
+    tags$h3("The Dataset"), #Context for data
+    tags$ul(
+      tags$li("The DIG dataset consists of baseline and outcome characteristics from the main DIG trial."),
+      tags$li("There were 6800 participants in the trial."),
+      tags$li("The trial was a randomized, placebo controlled, double-blinded trial that took place across the United States and Canada from 1991 to 1995 (Garg et al., 1997)."),
+    ),
     
-    p("The DIG dataset consists of baseline and outcome characteristics from
-    the main DIG trial. There were 6800 participants in the trial (Garg et al., 1997)."),
 
     br(),
-    tags$h3("The Drug"), 
+    tags$h3("The Drug"), #Context for drug
     
     img(src = "Digitalis_glycosides.png", width = "300px"),
+  
     br(),
-    p("Digitalis is a cardiac glycoside derived from the foxglove plant, 
-      a plant who's therapeutic potential was first described by William Withering in 1785. 
-      The drug also commonly referred to as digoxin is known for its distinctive steroid nucleus and lactone ring structure seen above (Hauptmann and kelly, 1999)."),
+      tags$li("Digitalis is a cardiac glycoside derived from the foxglove plant, a plant who's therapeutic potential was first described by William Withering in 1785."),
+      tags$li("The drug also commonly referred to as digoxin and is known for its distinctive steroid nucleus and lactone ring structure seen above (Hauptmann and kelly, 1999)."),
    
     
-    ), #Paragraphs Describing app, context of trial and an image of digitalis
+    ),
 #--------------------------------------------------------------------------------------------
 #Explore Tab     
     nav_panel("Explore",
@@ -149,7 +152,7 @@ ui <- fluidPage(
 ),
 #--------------------------------------------------------------------------------------------
 #Outcomes Tab 
-  nav_panel("Outcomes",
+ nav_panel("Outcomes",
             sidebarLayout(
               sidebarPanel(
                 h4("Outcomes Overview"),
@@ -175,6 +178,7 @@ ui <- fluidPage(
                 card(
                     card_header("Distribution of Hospitalization Month by Treatment Group"),
                     plotlyOutput("Hosp_plot"),
+                ),
               
                 card(
                     card_header("Distribution of Death Month by Treatment Group"),
@@ -182,7 +186,14 @@ ui <- fluidPage(
                   )
                 )
               )
-            )
-           )
+            ), 
+ tags$footer(
+  "For further information visit our Github",
+  tags$a(
+    target = "_blank",
+    href = "https://github.com/FilipMKgit/Shiny_App_DIG_Trial_Data", "Source Code"
+  ),
+  style = "width: 100%; color: black; text-align: center;"
+ ) # Github Link, should open on new webpage
 )
 )
