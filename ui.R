@@ -14,7 +14,7 @@ ui <- fluidPage(
 #--------------------------------------------------------------------------------------------
 #Welcome Tab    
     
-    nav_panel("Welcome", 
+    nav_panel("About", 
     tags$head(
     tags$style(HTML("
             code {
@@ -76,9 +76,12 @@ ui <- fluidPage(
     ),
 #--------------------------------------------------------------------------------------------
 #Explore Tab     
-    nav_panel("Explore",
+    nav_panel("Baseline",
+              
   sidebarLayout(
     sidebarPanel(
+      h4("Baseline Explortaion"),
+      p("This tab explores the baseline values of variables for both groups from the Digitalis Trial."),
       selectInput(
         "Variable", "Digitalis Data",
          choices = c("Age" = "AGE",
@@ -116,6 +119,9 @@ ui <- fluidPage(
   nav_panel("User Input",
  sidebarLayout(
    sidebarPanel(
+     h4("User Values Exploration"),
+     p("This tab allows the user to visualize their values for select variables on the boxplot and see their value represented on the D"),
+     
      selectInput(
        "user_variable", "User input",
        choices = c("Age" = "AGE",
