@@ -54,7 +54,8 @@ ui <- fluidPage(
       tags$li("Explore the summary statistics of the DIG trial using interactive plots and summary tables."), #Bullet Points
       tags$li("Input your own values to see how you compare to the sample in the study."),
       tags$li("Explore the outcomes of the trial and how treatment affected this."),
-      tags$li("You can do all of this in 3 different themes!")
+      tags$li("You can do all of this in 3 different themes!"),
+      tags$li("There is a surprise waiting for you on the last page!"),
     ),
   
     br(),
