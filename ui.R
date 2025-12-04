@@ -197,7 +197,14 @@ ui <- fluidPage(
                 card(
                     card_header("Distribution of Death Month by Treatment Group"),
                     plotlyOutput("death_month_plot")
-                  )
+                  ),
+                br(),
+                
+                actionButton(
+                  "Christmas",
+                  "🎁",
+                  class = "btn btn-success"
+                )
                 )
               )
             ), 

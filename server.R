@@ -3,6 +3,20 @@
 #START OF FUNCTION
 server <- function(input, output, session) {
   
+  observeEvent(input$Christmas, {
+    showModal(
+      modalDialog(
+        title ="🎁🎄🎁 MERRY CHRISTMAS 🎁🎄🎁",
+        HTML("
+        <p>Thank you for exploring our app, wishing you a very happy Christmas and a peaceful New Year! ☃️❄️🍫<p>
+        <p>🦌 Filip & Tom 🦌</p>
+             "),
+      easyClose = T,
+      footer = modalButton("🛷")
+      )
+    )
+  })
+  
   observe({
     if (input$app_theme == "dark_mode") {
       session$setCurrentTheme(dark_mode)
@@ -12,6 +26,7 @@ server <- function(input, output, session) {
       session$setCurrentTheme(light_mode)
     }
   })
+
   
   #filter non-NA age
   data_age <- reactive({
@@ -233,7 +248,7 @@ server <- function(input, output, session) {
      geom_tile() +
      facet_wrap(~ TRTMT) +
      labs(
-       title = "Hospitalization Heatmap by Treatment Group and Wosening Heart Failure",
+       title = "Hosp. Heatmap by Treatment Group and Wosening Heart Failure",
        x = "Worsening Heart Failure (WHF)",
        y = "Percentage Hospitalized",
        fill = "Count (n)") +
@@ -274,3 +289,4 @@ server <- function(input, output, session) {
     ggplotly(p)
   })
 }
+
