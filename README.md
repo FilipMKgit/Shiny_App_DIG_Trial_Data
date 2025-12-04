@@ -9,9 +9,14 @@ To run this app **directly from the cloned repository**:
 
 1. Clone the repo:  
 
-2. Open the project in R or RStudio.
+2. In the Repository URL box paste: https://github.com/FilipMKgit/Shiny_App_DIG_Trial_Data
 
-3. Install required packages (if needed):
+3. Open the project in R or RStudio.
 
-4. Use shiny::runApp()
+4. Install required packages (if needed):
 
+5. Use shiny::runApp()
+
+To oepn the app online use:
+
+ https://tomfilipdigapp.shinyapps.io/shiny_app_dig_trial_data/
