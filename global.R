@@ -51,4 +51,4 @@ nice_names <- c(
   "CREAT" = "Creatine",
   "DIABP" = "Diastolic BP",
   "SYSBP" = "Systolic BP"
-)
+) #nice names to be displayed on X axis of distributions

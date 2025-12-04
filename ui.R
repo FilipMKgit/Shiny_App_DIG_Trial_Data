@@ -35,17 +35,18 @@ ui <- fluidPage(
   ),
   
   
-  br(),
-    tags$h2("Welcome!", style = "color: firebrick;"), #Main Subtitle
+  br(), #space
+    tags$h2("Welcome!", style = "color: firebrick;"), #Welcome title
   
-  #Space out sections
-  div(style = "width: 350px;",
-  wellPanel(
+  div(
+  wellPanel(style = "border: 1px solid #444;
+             width: 350px;
+             background-color: rgba(255,255,255,0.1);",
   radioButtons("app_theme", "Select Theme:", choices = c("Default" = "light_mode",
   "Dark Mode" = "dark_mode",
-  "Sketchy" = "fun_mode"),
+  "Sketchy" = "fun_mode"), #theme select
   inline = TRUE
-  ))), #App theme select
+  ))), 
     
     br(),
     tags$h3("About This App"), #Context for app
@@ -64,12 +65,13 @@ ui <- fluidPage(
       tags$li("The trial was a randomized, placebo controlled, double-blinded trial that took place across the United States and Canada from 1991 to 1995 (Garg et al., 1997)."),
     ),
     
-
-    br(),
+  wellPanel( style = "border: 1px solid #444;
+             width: 500px;
+             background-color: rgba(255,255,255,0.1);",
     tags$h3("The Drug"), #Context for drug
     
     img(src = "Digitalis_glycosides.png", width = "300px"),
-  
+  ),
     br(),
     tags$ul(
       tags$li("Digitalis is a cardiac glycoside derived from the foxglove plant, a plant who's therapeutic potential was first described by William Withering in 1785."),
@@ -80,19 +82,19 @@ ui <- fluidPage(
     ),
 #--------------------------------------------------------------------------------------------
 #Explore Tab     
-    nav_panel("Baseline",
+    nav_panel("Baseline", #title
               
   sidebarLayout(
     sidebarPanel(
       h4("Baseline Explortaion"),
-      p("This tab explores the baseline values of variables for both groups from the Digitalis Trial."),
+      p("This tab explores the baseline values of variables for both groups from the Digitalis Trial."), #description for tab
       selectInput(
         "Variable", "Digitalis Data",
          choices = c("Age" = "AGE",
          "BMI" = "BMI",
          "Creatine" = "CREAT",
          "Diastolic BP" = "DIABP",
-         "Systolic BP" = "SYSBP")
+         "Systolic BP" = "SYSBP") 
          ), # Variables to be displayed on boxplot and Density plot
    
        radioButtons( #These buttons allow user to choose density/histogram
@@ -199,6 +201,9 @@ ui <- fluidPage(
                 )
               )
             ), 
+
+wellPanel( style = "border: 1px solid #444;
+             background-color: rgba(255,255,255,0.1);",
  tags$footer(
   "For further information visit our Github",
   tags$a(
@@ -208,4 +213,4 @@ ui <- fluidPage(
   style = "width: 100%; color: black; text-align: center;"
  ) # Github Link, should open on new webpage
 )
-)
+))
