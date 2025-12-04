@@ -3,7 +3,7 @@
 #START OF FUNCTION
 server <- function(input, output, session) {
   
-  observeEvent(input$Christmas, {
+  observeEvent(input$Christmas, { #christmas card button on tab 4
     showModal(
       modalDialog(
         title ="🎁🎄🎁 MERRY CHRISTMAS 🎁🎄🎁",
@@ -17,7 +17,7 @@ server <- function(input, output, session) {
     )
   })
   
-  observe({
+  observe({ #app looks out for the theme set in tab 1 and adjusts accordingly
     if (input$app_theme == "dark_mode") {
       session$setCurrentTheme(dark_mode)
     } else if (input$app_theme == "fun_mode") {
@@ -93,7 +93,7 @@ server <- function(input, output, session) {
            y = "Density") +
       theme_classic()
     
-    ggplotly(plotdensity)}
+    ggplotly(plotdensity)} #density plot
     
   else {
         plothist <- ggplot(data_age(), aes(x = .data[[input$Variable]])) +
@@ -103,7 +103,7 @@ server <- function(input, output, session) {
                y = "Count") +
           theme_classic()
         
-        ggplotly(plothist)
+        ggplotly(plothist) #histogram
     }
   })
   
@@ -119,7 +119,7 @@ server <- function(input, output, session) {
         Median = median(.data[[input$Variable]], na.rm = T),
         IQR = quantile(.data[[input$Variable]], na.rm = T, 0.75) - quantile(.data[[input$Variable]], na.rm = T, 0.25) 
       )
-})
+}) #summary table
 
 
 
@@ -142,7 +142,7 @@ server <- function(input, output, session) {
     
     user_bplot <- ggplot(dig.df, aes(x = TRTMT, y = .data[[var]], fill = TRTMT)) +
       geom_boxplot(alpha = 0.8) +
-      geom_hline(yintercept = user_val, color = "red3") +
+      geom_hline(yintercept = user_val, color = "red3") + #y intercept set as use input
       scale_fill_manual(values = cols1) +
       theme_fivethirtyeight()+
       labs(
@@ -167,7 +167,7 @@ server <- function(input, output, session) {
       plotdensity <- ggplot(data_age(), aes(x = .data[[var]])) +
         geom_density(fill = "darkturquoise", colour = "black") +
         geom_vline(xintercept = user_val,
-                   colour = "red3",
+                   colour = "red3", #x intercept set as user input for density plot
                    linewidth = 1) +
         labs(title = "Density Plot Distribution by Baseline Vraiables",
              x = nice_names[[var]],
@@ -179,7 +179,7 @@ server <- function(input, output, session) {
       plothist <- ggplot(data_age(), aes(x = .data[[var]])) +
         geom_histogram(fill = "orchid", colour = "white") +
         geom_vline(xintercept = user_val,
-                   colour = "red3",
+                   colour = "red3", #x intercept set as user input for histogram
                    linewidth = 1) +
         labs(
           title = "Histogram Distribution of Baseline Variables",
@@ -206,7 +206,7 @@ server <- function(input, output, session) {
       "User value" = round(user_val, 3),
       "Proportion ≤ user" = round(cum_proportion, 3),
       "Percentile (%)" = round(cum_proportion * 100, 1),
-      check.names = FALSE
+      check.names = FALSE #summary table
     )
   }, rownames = FALSE)
   
@@ -227,7 +227,7 @@ server <- function(input, output, session) {
       AN, " <b>", nice_names[[var]], "</b> of <b>", round(user_val, 1), "</b> ",
       "is higher than about <b>", percentile,
       "%</b> of patients in the DIG trial.",
-      "</div>"
+      "</div>" #text logic for tab 3 interpretation text box
     ))
   })
   #--------------------------------------------------------------------------------------------

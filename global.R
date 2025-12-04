@@ -15,7 +15,7 @@ light_mode <- bs_theme( bootswatch = "flatly")
 
 dark_mode <- bs_theme(bootswatch = "darkly")
 
-fun_mode <- bs_theme(bootswatch = "sketchy")
+fun_mode <- bs_theme(bootswatch = "sketchy") #defining the 3 app themes
 
 
 dig.df <- read_csv("DIG.csv")
@@ -52,4 +52,4 @@ nice_names <- c(
   "CREAT" = "Creatine",
   "DIABP" = "Diastolic BP",
   "SYSBP" = "Systolic BP"
-) #nice names to be displayed on X axis of distributions
+) #nice names to be displayed on X axis of distribution plots

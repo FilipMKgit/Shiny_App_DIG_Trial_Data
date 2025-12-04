@@ -4,7 +4,7 @@
 
 
 ui <- fluidPage(
-  theme = light_mode,
+  theme = light_mode, #light mode is default
   
   tags$div(
     tags$h1("Digitalis Trial Shiny",
@@ -203,7 +203,7 @@ ui <- fluidPage(
                 actionButton(
                   "Christmas",
                   "🎁",
-                  class = "btn btn-success"
+                  class = "btn btn-success" #christmas card button on page 4
                 )
                 )
               )
