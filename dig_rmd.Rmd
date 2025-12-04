@@ -24,6 +24,9 @@ This tab will have box plots comparing placebo and treatment, density plot/ hist
 TAB 3: Patient X
 This tab will allow the user to enter his own value for a selected variable (also choose treament/ placebo). The variable will then be plotted and represented on the box plot and density plot. Also an info box will be present which will state how unusual the patient is compared to the data set.
 
+TAB 4:
+This tab will be used for displaying some of the outcomes of the trial. We can use plots from assignment 4 for this. 
+
 THEME:
 If time allows for it we can make a nice military/ secret operation theme for the app.
 

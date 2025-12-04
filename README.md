@@ -1,5 +1,3 @@
 # Shiny_App_DIG_Trial_Data
-test1
+This Repository Contains A shiny application for exploring the data In the DIG trial. 
 
-
-test29
