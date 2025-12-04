@@ -72,14 +72,17 @@ server <- function(input, output, session) {
     
     plotdensity <- ggplot(data_age(), aes(x = .data[[input$Variable]])) +
       geom_density(fill = "darkorange", colour = "black", alpha = 0.75) +
-      theme_classic() +
-      labs(title = "Density Plot by Baseline Variables")
+      labs(title = "Density Plot by Baseline Variables",
+           y = "Density") +
+      theme_classic()
+    
     ggplotly(plotdensity)}
     
   else {
         plothist <- ggplot(data_age(), aes(x = .data[[input$Variable]])) +
           geom_histogram(fill = "tomato", colour = "white", alpha = 0.8) +
-          labs(title = "Histogram by Baseline Variables") +
+          labs(title = "Histogram by Baseline Variables",
+               y = "Count") +
           theme_classic()
         
         ggplotly(plothist)
@@ -174,11 +177,19 @@ server <- function(input, output, session) {
     var <- input$user_variable
     user_val <- input$user_value
     
+    nice_names <- c(
+      "AGE"   = "Age",
+      "BMI"   = "BMI",
+      "CREAT" = "Creatine",
+      "DIABP" = "Diastolic BP",
+      "SYSBP" = "Systolic BP"
+    )
+    
     df_user <- dig.df %>% filter(!is.na(.data[[var]]))
     cum_proportion <- mean(df_user[[var]] <= user_val)
     
     data.frame(
-      "Variable" = var,
+      "Variable" = nice_names,
       "User value" = round(user_val, 3),
       "Proportion ≤ user" = round(cum_proportion, 3),
       "Percentile (%)" = round(cum_proportion * 100, 1),
