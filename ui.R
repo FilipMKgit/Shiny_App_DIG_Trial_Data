@@ -120,7 +120,7 @@ ui <- fluidPage(
  sidebarLayout(
    sidebarPanel(
      h4("User Values Exploration"),
-     p("This tab allows the user to visualize their values for select variables on the boxplot and see their value represented on the D"),
+     p("This tab allows the user to visualize their values for select variables on the boxplot and see their value represented on the density plot."),
      
      selectInput(
        "user_variable", "User input",
