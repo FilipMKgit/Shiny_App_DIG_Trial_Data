@@ -36,27 +36,36 @@ ui <- fluidPage(
     
     tags$h2("Welcome!", style = "color: firebrick;"),
   
+  br(),
   radioButtons("app_theme", "Select App Theme:", choices = c("Default" = "light_mode",
   "Dark Mode" = "dark_mode",
   "Sketchy" = "fun_mode"),
   inline = TRUE
   ), #Selecting Theme for entire app
     
+    br(),
+    tags$h3("About This App"),
+  
+    
     p("This Shiny Application explores the DIG Trial was a randomized, double-blind,
     multicenter trial with more than 300 centers. The aim of the trial was to assess
     the efficacy and tolerability of Digitalis for the treatment of congestive heart failure.
     You can explore our app in three different themes by selecting one of the radio buttons above."),
-    
-    strong("Dataset"),
+    br(),
+    tags$h3("The Dataset"),
     
     p("The DIG dataset consists of baseline and outcome characteristics from
     the main DIG trial. There were 6800 participants in the trial (Garg et al., 1997)."),
+    br(),
+    tags$h3("What You Can Do in This App"),
   
     p("Our app explores the baseline characteristics of the trial through the lens of the user. 
       The first tab (Explore) shows visualisations of the summary statistics of this trial, including boxplots, density plots and a summary table. 
       Tab 2 (User Input) allows the user to input their own baseline characteristics and see how they would compare against the distributions of other patients within the trial. 
       Finally, Tab 3 (Outcomes) shows the outcome of the trial in terms of hozpitalizations and mortality."),
-  
+    br(),
+    tags$h3("The Drug"), 
+    
     img(src = "Digitalis_glycosides.png", width = "300px"),
   
     p("Digitalis is a cardiac glycoside derived from the foxglove plant, 
