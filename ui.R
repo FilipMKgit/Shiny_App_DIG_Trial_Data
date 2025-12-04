@@ -36,12 +36,14 @@ ui <- fluidPage(
     
     tags$h2("Welcome!", style = "color: firebrick;"), #Main Subtitle
   
-  br(), #Space out sections
+  br(),
+  #Space out sections
+  wellPanel(
   radioButtons("app_theme", "Select App Theme:", choices = c("Default" = "light_mode",
   "Dark Mode" = "dark_mode",
   "Sketchy" = "fun_mode"),
   inline = TRUE
-  ), #Selecting Theme for entire app
+  )), #Selecting Theme for entire app
     
     br(),
     tags$h3("About This App"), #Context for app
@@ -120,7 +122,7 @@ ui <- fluidPage(
  sidebarLayout(
    sidebarPanel(
      h4("User Values Exploration"),
-     p("This tab allows the user to visualize their values for select variables on the boxplot and see their value represented on the D"),
+     p("This tab allows the user to visualize their values for select variables on the boxplot and see their value represented on the density plot."),
      
      selectInput(
        "user_variable", "User input",
