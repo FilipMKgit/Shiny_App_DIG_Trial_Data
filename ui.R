@@ -33,17 +33,19 @@ ui <- fluidPage(
                 font-family:monospace;
             }"))
   ),
-    
-    tags$h2("Welcome!", style = "color: firebrick;"), #Main Subtitle
+  
   
   br(),
+    tags$h2("Welcome!", style = "color: firebrick;"), #Main Subtitle
+  
   #Space out sections
+  div(style = "width: 350px;",
   wellPanel(
-  radioButtons("app_theme", "Select App Theme:", choices = c("Default" = "light_mode",
+  radioButtons("app_theme", "Select Theme:", choices = c("Default" = "light_mode",
   "Dark Mode" = "dark_mode",
   "Sketchy" = "fun_mode"),
   inline = TRUE
-  )), #Selecting Theme for entire app
+  ))), #App theme select
     
     br(),
     tags$h3("About This App"), #Context for app

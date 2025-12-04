@@ -17,6 +17,6 @@ To run this app **directly from the cloned repository**:
 
 5. Use shiny::runApp()
 
-To oepn the app online use:
+To open the app online use:
 
  https://tomfilipdigapp.shinyapps.io/shiny_app_dig_trial_data/

@@ -67,12 +67,14 @@ server <- function(input, output, session) {
   #--------------------------------------------------------------------------------------------
   #DENSITY PLOT AND HISTORGRAM FOR TAB 2
   output$age_count_plot <- renderPlotly({
+    var <- input$Variable
     
   if (input$dist_type == "density"){
     
     plotdensity <- ggplot(data_age(), aes(x = .data[[input$Variable]])) +
       geom_density(fill = "darkorange", colour = "black", alpha = 0.75) +
       labs(title = "Density Plot by Baseline Variables",
+           x = nice_names[[var]],
            y = "Density") +
       theme_classic()
     
@@ -82,6 +84,7 @@ server <- function(input, output, session) {
         plothist <- ggplot(data_age(), aes(x = .data[[input$Variable]])) +
           geom_histogram(fill = "tomato", colour = "white", alpha = 0.8) +
           labs(title = "Histogram by Baseline Variables",
+               x = nice_names[[var]],
                y = "Count") +
           theme_classic()
         
@@ -152,6 +155,7 @@ server <- function(input, output, session) {
                    colour = "red3",
                    linewidth = 1) +
         labs(title = "Density Plot Distribution by Baseline Vraiables",
+             x = nice_names[[var]],
              y = "Density")+
         theme_classic() 
       ggplotly(plotdensity)}
@@ -164,6 +168,7 @@ server <- function(input, output, session) {
                    linewidth = 1) +
         labs(
           title = "Histogram Distribution of Baseline Variables",
+          x = nice_names[[var]],
           y = "Count") +
         theme_classic()
       
@@ -177,13 +182,6 @@ server <- function(input, output, session) {
     var <- input$user_variable
     user_val <- input$user_value
     
-    nice_names <- c(
-      "AGE"   = "Age",
-      "BMI"   = "BMI",
-      "CREAT" = "Creatine",
-      "DIABP" = "Diastolic BP",
-      "SYSBP" = "Systolic BP"
-    )
     
     df_user <- dig.df %>% filter(!is.na(.data[[var]]))
     cum_proportion <- mean(df_user[[var]] <= user_val)
@@ -202,17 +200,8 @@ server <- function(input, output, session) {
     var <- input$user_variable
     user_val <- input$user_value
     
-    nice_names <- c(
-      "AGE"   = "Age",
-      "BMI"   = "BMI",
-      "CREAT" = "Creatine",
-      "DIABP" = "Diastolic BP",
-      "SYSBP" = "Systolic BP"
-    )
     
-    nice_var <- nice_names[[var]]
-    
-    AN <- ifelse(nice_var == "Age", "An", "A")
+    AN <- ifelse(nice_names[[var]] == "Age", "An", "A")
     
     df_user <- dig.df %>% filter(!is.na(.data[[var]]))
     cum_proportion <- mean(df_user[[var]] <= user_val)
@@ -220,7 +209,7 @@ server <- function(input, output, session) {
     
     HTML(paste0(
       "<div class='alert alert-info' style='font-size:15px;'>",
-      AN, " <b>", nice_var, "</b> of <b>", round(user_val, 1), "</b> ",
+      AN, " <b>", nice_names[[var]], "</b> of <b>", round(user_val, 1), "</b> ",
       "is higher than about <b>", percentile,
       "%</b> of patients in the DIG trial.",
       "</div>"

@@ -45,4 +45,10 @@ WHF_Hosp_summary <- dig.df %>%
 #From Assignment 4 for Death Month
 Month_dig.df <- dig.df %>% mutate(Month = round(as.numeric(DEATHDAY/30))) %>% select(ID, TRTMT, Month) %>% filter(!is.na(Month))
 
-
+nice_names <- c(
+  "AGE"   = "Age",
+  "BMI"   = "BMI",
+  "CREAT" = "Creatine",
+  "DIABP" = "Diastolic BP",
+  "SYSBP" = "Systolic BP"
+)
